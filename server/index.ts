@@ -3,8 +3,9 @@ import cors from 'cors'
 
 import dotenv from 'dotenv';
 
-import chatRoutes from './src/chatRoutes'
-
+import chatRoutes from './src/routes/chatRoutes'
+import recordRoutes from './src/routes/recordRoutes'
+import './src/db'
 dotenv.config();
 
 const app: Application = express();
@@ -19,6 +20,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/chat', chatRoutes)
+app.use('/record', recordRoutes)
 
 app.listen({ port }, () => {
   console.log(`Server is Fire at http://localhost:${port}`);
